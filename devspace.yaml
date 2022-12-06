@@ -1,0 +1,15 @@
+version: v2beta1
+name: double-flag
+
+profiles:
+  - name: local
+  - name: test
+
+pipelines:
+  deploy:
+    run: |-
+      echo $(get_flag "profile")
+      echo $(get_flag "force-deploy")
+
+vars:
+  DEVSPACE_FLAGS: --namespace double-flag
